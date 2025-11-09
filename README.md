@@ -23,6 +23,17 @@ I logged into Splunk, navigated to Apps > Search & Reporting, and uploaded the l
   Tip: I realized early that proper indexing and sourcetype selection is critical for smooth searches later on
 ```
 <!--screenshot-->
+**LogIn :** <br>
+![LogIn](https://github.com/user-attachments/assets/71d1f8ac-2c2d-49bf-85be-cb4685054905) <br><br>
+**Search & Reporting :** <br><br>
+![Search & reporting](https://github.com/user-attachments/assets/52c83256-cea1-4530-a153-6d160d9d6bdf) <br><br>
+**SSH Log File Upload :** <br><br> 
+![SSH Log File Uploaded](https://github.com/user-attachments/assets/8bb683dd-e876-425d-9b4b-adac8e135d6a) <br><br>
+**File Uploaded :** <br><br>
+![File Uploaded](https://github.com/user-attachments/assets/f11c3ace-f239-47b0-ae32-be40e2ddb6f3) <br><br>
+**Selected Sourcetype _json:** <br><br>
+![Selected sourcetype _json](https://github.com/user-attachments/assets/5422bb8f-133b-46dc-ba81-e0e2e1145963) <br><br>
+![](https://github.com/user-attachments/assets/6078f3d6-121b-4336-afd5-cecd6ed9c03d) 
 
 ---
 ## Step 1: Ingesting and Parsing SSH Logs
@@ -38,17 +49,16 @@ I ran a validation query to check the distribution of events:
 index=ssh_logs | stats count by event_type
 ```
 <!--screenshot-->
+<img width="945" height="495" alt="Image" src="https://github.com/user-attachments/assets/8555fd98-b5b6-4101-8d08-e3d6519e19d1" />
+
 ---
 ## Step 2: Analyzing Failed Login Attempts
 I focused on identifying IP addresses with failed login attempts to detect potential brute-force activity. I ran the following search:
 ```bash
 index=ssh_logs event_type="Failed SSH Login" | stats count by id.orig_h
 ```
-This helped me see which source IPs were generating the most failed logins. I also created a bar chart to visualize the top 10 offending IPs.
-
-<!--Screenshot suggestion:
-Search results of failed login counts by IP.
-Bar chart showing the top 10 IPs.-->
+This helped me see which source IPs were generating the most failed logins. I also created a bar chart to visualize the top 10 offending IPs. <br><br>
+<img width="911" height="686" alt="Image" src="https://github.com/user-attachments/assets/ba503195-bb84-4121-b366-40c1de874d56" />
 
 ---
 ## Step 3: Detecting Multiple Failed Authentication Attempts
