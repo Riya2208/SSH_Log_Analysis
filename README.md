@@ -58,7 +58,9 @@ I focused on identifying IP addresses with failed login attempts to detect poten
 index=ssh_logs event_type="Failed SSH Login" | stats count by id.orig_h
 ```
 This helped me see which source IPs were generating the most failed logins. I also created a bar chart to visualize the top 10 offending IPs. <br><br>
-<img width="911" height="686" alt="Image" src="https://github.com/user-attachments/assets/ba503195-bb84-4121-b366-40c1de874d56" />
+<img width="911" height="686" alt="Image" src="https://github.com/user-attachments/assets/ba503195-bb84-4121-b366-40c1de874d56" /> <br><br>
+<img width="940" height="501" alt="Image" src="https://github.com/user-attachments/assets/e6852a24-95c0-47d7-9061-9c2f5a00008b" />
+
 
 ---
 ## Step 3: Detecting Multiple Failed Authentication Attempts
@@ -69,9 +71,8 @@ index=ssh_logs event_type="Multiple Failed Authentication Attempts" | stats coun
 ```
 I identified repeated failures (more than 5 attempts) and configured a Splunk alert to trigger if an IP exceeded 5 login attempts within 10 minutes. This allowed me to simulate real-time monitoring for high-risk activity.
 
-<!--Screenshot suggestion:
-Query results showing multiple failed attempts.
-Screenshot of alert configuration in Splunk.-->
+<img width="917" height="601" alt="Image" src="https://github.com/user-attachments/assets/8e814bee-2e9d-4688-a8e3-2da9793fa55b" />
+
 ---
 ## Step 4: Tracking Successful Logins
 
@@ -81,9 +82,8 @@ index=ssh_logs event_type="Successful SSH Login" | stats count by id.orig_h, id.
 ```
 I compared successful logins with prior failed attempts to spot any suspicious patterns. Finally, I created a dashboard panel to display the top source IPs for successful logins.
 
-<!--Screenshot suggestion:
-Query results of successful logins.
-Dashboard panel showing top source IPs.-->
+<img width="929" height="356" alt="Image" src="https://github.com/user-attachments/assets/71bbc53d-7e6e-44b0-8669-bb68b50c4bbd" />
+
 ---
 ## Step 5: Identifying Connections Without Authentication
 I also wanted to track potential SSH scanning attempts or incomplete connections. Using this search:
@@ -96,9 +96,8 @@ index=ssh_logs event_type="Connection Without Authentication" | timechart count 
 ```
 This helped me identify repeated unauthenticated attempts and possible port scanning activity.
 
-<!--Screenshot suggestion:
-Query results of unauthenticated connections.
-Timechart visualization showing events over time.-->
+<img width="940" height="289" alt="Image" src="https://github.com/user-attachments/assets/5332099d-3f1c-4bff-87fa-a843c8c8bd27" />
+
 ---
 ## Conclusion and Learnings
 By completing this lab:
