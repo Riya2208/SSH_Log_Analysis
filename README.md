@@ -12,11 +12,12 @@ By completing this lab, I learned practical SOC Analyst skills, from log ingesti
 
 ---
 ## Lab Setup & Preparation
+
 Before starting, I made sure:
 
-1.Splunk Enterprise was installed on my system.
-2.The SSH log file (ssh_log.json) was downloaded.
-3.I had a basic understanding of Splunk’s Search & Reporting app.
+1. Splunk Enterprise was installed on my system.
+2. The SSH log file (`ssh_log.json`) was downloaded.
+3. I had a basic understanding of Splunk’s Search & Reporting app.
 
 I logged into Splunk, navigated to Apps > Search & Reporting, and uploaded the log file. I selected _json as the sourcetype to automatically extract fields and created a new index called ssh_logs.
 ```bash
